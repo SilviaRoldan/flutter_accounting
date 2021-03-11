@@ -23,7 +23,7 @@ class Expensive extends StatelessWidget {
         child: Column(
 
           children: [
-            Image.asset('images/expensive.png', width: 500, height: 500, fit: BoxFit.cover,),
+            Image.asset('images/gastos.jpeg', width: 500, height: 500, fit: BoxFit.cover,),
 
           ],
         ),
