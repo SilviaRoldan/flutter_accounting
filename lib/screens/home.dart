@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                 ),),
                 leading:  Icon(AccountingIcons.graphic ,color: Colors.lightGreen,),
                 onTap: () => Navigator.pushNamedAndRemoveUntil( context,
-                    Routes.PATH_INVOICES, (route) => route.settings.name == '/'),
+                    Routes.PATH_GRAPHIC, (route) => route.settings.name == '/'),
               ),
                Divider(),
               ListTile(

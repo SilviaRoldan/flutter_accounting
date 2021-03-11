@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_accounting/accounting_icons.dart';
 
 // Define un widget de formulario
 class MyClientForm extends StatefulWidget {
@@ -25,7 +26,7 @@ class MyClientFormState extends State<MyClientForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new ListTile(
-                leading: const Icon(Icons.business_center_outlined),
+                leading: const Icon(Icons.roofing_rounded),
                 title: new TextField(
                   decoration: new InputDecoration(
                     hintText: "Company Name",
@@ -39,7 +40,7 @@ class MyClientFormState extends State<MyClientForm> {
                 leading: const Icon(Icons.person),
                 title: new TextFormField(
                   decoration: new InputDecoration(
-                    hintText: "Name",
+                    hintText: "Full Name",
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.lightGreen, width: 2.0),
                     ),
@@ -69,7 +70,7 @@ class MyClientFormState extends State<MyClientForm> {
                 ),
               ),
               new ListTile(
-                leading: const Icon(Icons.local_post_office),
+                leading: const Icon(Icons.markunread_mailbox_rounded),
                 title: new TextFormField(
                   decoration: new InputDecoration(
                     hintText: "ZIP",
@@ -92,7 +93,7 @@ class MyClientFormState extends State<MyClientForm> {
                 ),
               ),
               new ListTile(
-                leading: const Icon(Icons.assignment_outlined),
+                leading: const Icon(AccountingIcons.percent),
                 title: new TextFormField(
                   decoration: new InputDecoration(
                     hintText: "VAT",
