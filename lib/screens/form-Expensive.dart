@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_accounting/widgets/myInvoicesform.dart';
+import 'package:flutter_accounting/widgets/myExpensiveform.dart';
 import 'package:flutter_accounting/widgets/calendarDate.dart';
 
 
 
 
-class FormInvoices extends StatelessWidget {
+class FormExpensive extends StatelessWidget {
 
 
   @override
@@ -13,7 +13,7 @@ class FormInvoices extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
-        title: Center ( child:Text('My Invoices',
+        title: Center ( child:Text('My Expensives',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
@@ -23,7 +23,7 @@ class FormInvoices extends StatelessWidget {
         ),
 
       ),
-      body: MyInvoicesForm(),
+      body: MyExpensiveForm(),
       floatingActionButtonLocation:
       FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(

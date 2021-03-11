@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_accounting/accounting_icons.dart';
 import 'package:flutter_accounting/screens/routes.dart';
 import 'package:flutter_accounting/widgets/buttonsHomeWidgets.dart';
 
@@ -36,10 +37,6 @@ class _HomeState extends State<Home> {
 
                UserAccountsDrawerHeader(
 
-                accountName:
-                    Text ('Silvia Roldan',style: TextStyle (fontSize: 20.0, color: Colors.lightGreen, fontWeight: FontWeight.bold),),
-                // accountEmail:
-                //     Text ('silviaroldan71@gmail.com',style: TextStyle (fontSize: 15.0, color: Colors.deepOrange, fontWeight: FontWeight.bold),),
                 currentAccountPicture:
                     CircleAvatar (
                           backgroundColor: Colors.lightGreen,
@@ -75,7 +72,7 @@ class _HomeState extends State<Home> {
                     color: Colors.blueGrey[600],
                     ),
                   ),
-                  leading:  Icon(Icons.emoji_people_rounded, color: Colors.lightGreen,),
+                  leading:  Icon(AccountingIcons.clients, color: Colors.lightGreen,),
                     onTap: () => Navigator.pushNamedAndRemoveUntil( context,
                         Routes.PATH_CLIENTS, (route) => route.settings.name == '/'),
               ),
@@ -86,7 +83,7 @@ class _HomeState extends State<Home> {
                     fontFamily: 'JetBrains Mono',
                     color: Colors.blueGrey[600],
                   ),),
-                  leading:  Icon(Icons.airport_shuttle_rounded,color: Colors.lightGreen,),
+                  leading:  Icon(AccountingIcons.supplier,color: Colors.lightGreen,),
                     onTap: () => Navigator.pushNamedAndRemoveUntil( context,
                         Routes.PATH_SUPPLIERS, (route) => route.settings.name == '/'),
 
@@ -98,7 +95,7 @@ class _HomeState extends State<Home> {
                     fontFamily: 'JetBrains Mono',
                     color: Colors.blueGrey[600],
                   ),),
-                  leading:  Icon(Icons.attach_file,color: Colors.lightGreen,),
+                  leading:  Icon(AccountingIcons.receipt,color: Colors.lightGreen,),
                   onTap: () => Navigator.pushNamedAndRemoveUntil( context,
                     Routes.PATH_EXPENSIVE, (route) => route.settings.name == '/'),
               ),
@@ -120,9 +117,9 @@ class _HomeState extends State<Home> {
                   fontFamily: 'JetBrains Mono',
                   color: Colors.blueGrey[600],
                 ),),
-                leading:  Icon(Icons.donut_small ,color: Colors.lightGreen,),
+                leading:  Icon(AccountingIcons.graphic ,color: Colors.lightGreen,),
                 onTap: () => Navigator.pushNamedAndRemoveUntil( context,
-                    Routes.PATH_INVOICES, (route) => route.settings.name == '/'),
+                    Routes.PATH_GRAPHIC, (route) => route.settings.name == '/'),
               ),
                Divider(),
               ListTile(

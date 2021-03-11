@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_accounting/accounting_icons.dart';
 
 // Define un widget de formulario
-class MyInvoicesForm extends StatefulWidget {
+class MyExpensiveForm extends StatefulWidget {
   @override
-  MyInvoicesFormState createState() {
-    return MyInvoicesFormState();
+  MyExpensiveFormState createState() {
+    return MyExpensiveFormState();
   }
 }
 
-class MyInvoicesFormState extends State<MyInvoicesForm> {
+class MyExpensiveFormState extends State<MyExpensiveForm> {
 
   final _formKey = GlobalKey<FormState>();
 
@@ -27,22 +27,22 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ListTile(
-                  leading: const Icon(Icons.roofing_rounded),
-                  title:DropdownButton<String>(
-                       hint: Text ('Company'),
-                       icon: Icon(Icons.arrow_drop_down, color: Colors.lightGreen, ),
-                       iconSize: 36,
-                       isExpanded: true,
-                       items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                       return new DropdownMenuItem<String>(
-                        value: value,
-                        child: new Text(value),
-                  );
-                }).toList(),
-                onChanged: (_) {},
+                leading: const Icon(Icons.roofing_rounded),
+                title:DropdownButton<String>(
+                  hint: Text ('Company'),
+                  icon: Icon(Icons.arrow_drop_down, color: Colors.lightGreen, ),
+                  iconSize: 36,
+                  isExpanded: true,
+                  items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                    return new DropdownMenuItem<String>(
+                      value: value,
+                      child: new Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (_) {},
+                ),
               ),
-              ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.calendar_today_rounded),
                 title:  TextField(
                   decoration:  InputDecoration(
@@ -54,7 +54,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.format_list_numbered_rounded),
                 title:  TextField(
                   decoration:  InputDecoration(
@@ -66,7 +66,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.edit_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(
@@ -78,7 +78,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.confirmation_num_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(
@@ -90,7 +90,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.euro_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(
@@ -102,7 +102,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(AccountingIcons.percent),
                 title:  TextFormField(
                   decoration:  InputDecoration(
@@ -114,7 +114,7 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                   ),
                 ),
               ),
-               ListTile(
+              ListTile(
                 leading: const Icon(Icons.point_of_sale_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(
@@ -127,16 +127,16 @@ class MyInvoicesFormState extends State<MyInvoicesForm> {
                 ),
               ),
               CheckboxListTile(
-                  title: const Text('Paid'),
-                  value: _paid,
-                  onChanged: (bool newValue) {
-                    setState(() {
-                      _paid = newValue;
-                    });
-                  },
-                  secondary: const Icon(Icons.touch_app_rounded),
-                ),
-               ListTile(
+                title: const Text('Paid'),
+                value: _paid,
+                onChanged: (bool newValue) {
+                  setState(() {
+                    _paid = newValue;
+                  });
+                },
+                secondary: const Icon(Icons.touch_app_rounded),
+              ),
+              ListTile(
                 leading: const Icon(Icons.perm_contact_calendar_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(

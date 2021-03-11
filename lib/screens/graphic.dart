@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_accounting/screens/routes.dart';
 
 
-class Expensive extends StatelessWidget {
+
+
+class Graphic extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
-        title: Center ( child:Text('My Expensive',
+        title: Center ( child:Text('Graphics',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
@@ -23,7 +26,7 @@ class Expensive extends StatelessWidget {
         child: Column(
 
           children: [
-            Image.asset('images/gastos.jpeg', width: 500, height: 500, fit: BoxFit.cover,),
+            Image.asset('images/graphic2.jpg', width: 500, height: 400, fit: BoxFit.cover,),
 
           ],
         ),
@@ -38,24 +41,18 @@ class Expensive extends StatelessWidget {
           children: <Widget>[
             FloatingActionButton(
               heroTag: '1',
-              onPressed: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  Routes.PATH_FORM_EXPENSIVE, (route) => route.settings.name == '/'),
-              child: Icon(Icons.add, color:Colors.blueGrey[800],size: 38.0),
+              onPressed: () {},
+              child: Icon(Icons.check, color:Colors.blueGrey[800],size: 38.0),
             ),
             FloatingActionButton(
               heroTag: '2',
               onPressed: () {},
-              child: Icon(Icons.library_books_outlined, color:Colors.blueGrey[800],size: 38.0 ),
+              child: Icon(Icons.delete_forever, color:Colors.blueGrey[800],size: 38.0 ),
             ),
-            FloatingActionButton(
-              heroTag: '3',
-              onPressed: () {},
-              child: Icon(Icons.search, color:Colors.blueGrey[800],size: 38.0 ),
-            )
           ],
         ),
       ),
     );
   }
 }
+
