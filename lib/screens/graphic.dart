@@ -26,7 +26,7 @@ class Graphic extends StatelessWidget {
         child: Column(
 
           children: [
-            Image.asset('images/graphic2.jpg', width: 500, height: 400, fit: BoxFit.cover,),
+            Image.asset('images/pinta-grafico.jpg', width: 500, height: 400, fit: BoxFit.cover,),
 
           ],
         ),
@@ -41,7 +41,9 @@ class Graphic extends StatelessWidget {
           children: <Widget>[
             FloatingActionButton(
               heroTag: '1',
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Routes.PATH_GRAPHIC_INVOICES, (route) => route.settings.name == '/'),
               child: Icon(Icons.check, color:Colors.blueGrey[800],size: 38.0),
             ),
             FloatingActionButton(
