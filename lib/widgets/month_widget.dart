@@ -36,6 +36,7 @@ class MonthWidget extends StatefulWidget {
 class _MonthWidgetState extends State<MonthWidget> {
   @override
   Widget build(BuildContext context) {
+    print(widget.categories);
     return Expanded(
       child:Column(
       children:<Widget> [
@@ -53,7 +54,7 @@ class _MonthWidgetState extends State<MonthWidget> {
   Widget _expenses() {
     return Column(
       children: <Widget>[
-        Text('\$${widget.total.toStringAsFixed(2)}',
+        Text('\€${widget.total.toStringAsFixed(2)}',
           style: TextStyle (
               fontWeight: FontWeight.bold,
               fontSize: 40.0,
@@ -104,7 +105,7 @@ class _MonthWidgetState extends State<MonthWidget> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text('\$$value',
+          child: Text('\€$value',
             style: TextStyle (
               fontWeight: FontWeight.bold,
               color: Colors.blueGrey,
@@ -118,17 +119,19 @@ class _MonthWidgetState extends State<MonthWidget> {
 
   Widget _list() {
     return Expanded(
-      child: ListView (
-        children: <Widget>[
-          _item(FontAwesomeIcons.shoppingCart, 'Shopping', 14, 145.12),
-          _item(FontAwesomeIcons.fish, 'Shopping', 5, 96.32),
-          _item(FontAwesomeIcons.personBooth, 'Clothes', 2, 89.23),
-          _item(FontAwesomeIcons.laptop, 'Computer', 15, 523.23),
-          _item(FontAwesomeIcons.shuttleVan, 'Petrol', 3, 200.0),
-          _item(FontAwesomeIcons.cocktail, 'Alcohol', 10, 254.12),
-          _item(FontAwesomeIcons.fileAlt, 'Bills', 14, 145.12),
-
-        ],
+      child: ListView.separated(
+        itemCount: widget.categories.keys.length,
+        itemBuilder: (BuildContext context, int index) {
+          var key = widget.categories.keys.elementAt(index);
+          var data = widget.categories[key];
+          return _item(FontAwesomeIcons.shoppingCart, key, 100 * data ~/ widget.total, data);
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Container(
+            color: Colors.lightGreen.withOpacity(0.15),
+            height: 8.0,
+          );
+        },
       ),
     );
   }
