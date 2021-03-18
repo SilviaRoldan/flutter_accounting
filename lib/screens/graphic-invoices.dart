@@ -1,8 +1,14 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_accounting/graph_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+
 
 
 class GraphicInvoices extends StatefulWidget {
@@ -14,7 +20,7 @@ class GraphicInvoices extends StatefulWidget {
 class _GraphicInvoicesState extends State<GraphicInvoices> {
   PageController _controller;
 
-  int currentPage = 9;
+  int currentPage = 8;
 
   @override
 
@@ -22,7 +28,17 @@ class _GraphicInvoicesState extends State<GraphicInvoices> {
   void initState(){
       super.initState();
 
-    _controller = PageController(
+
+      FirebaseFirestore.instance
+          .collection('expensives')
+          .where('month_invoices', isEqualTo: currentPage + 1)
+          .snapshots()
+          .listen((data) =>
+          data.docs.forEach((doc) => print(doc['category'])));
+
+
+
+      _controller = PageController(
       initialPage: currentPage,
       viewportFraction: 0.4,
     );
@@ -43,7 +59,7 @@ class _GraphicInvoicesState extends State<GraphicInvoices> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightGreen,
-          title: Center(child: Text('GRAPHICS INVOICES',
+          title: Center(child: Text('Graphics Expensives',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30.0,

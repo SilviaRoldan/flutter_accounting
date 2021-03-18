@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1071180107729",
+    "project_id": "flutter-accounting",
+    "storage_bucket": "flutter-accounting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071180107729:android:0f33d72beb2a28972e1af0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_accounting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071180107729-2ddhj9f82t4cta8uke2okobesj2givbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-qHpDtHwshwPQOIMsi-R9GaIIswBdQ2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071180107729-2ddhj9f82t4cta8uke2okobesj2givbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -67,6 +67,22 @@ class MyExpensiveFormState extends State<MyExpensiveForm> {
                 ),
               ),
               ListTile(
+                leading: const Icon(Icons.roofing_rounded),
+                title:DropdownButton<String>(
+                  hint: Text ('Category'),
+                  icon: Icon(Icons.arrow_drop_down, color: Colors.lightGreen, ),
+                  iconSize: 36,
+                  isExpanded: true,
+                  items: <String>['Software', 'Offices', 'Taxes', 'Broadband','Insurances','Payroll','Commissions','Consultancies' ].map((String value) {
+                    return new DropdownMenuItem<String>(
+                      value: value,
+                      child: new Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (_) {},
+                ),
+              ),
+              ListTile(
                 leading: const Icon(Icons.edit_rounded),
                 title:  TextFormField(
                   decoration:  InputDecoration(
