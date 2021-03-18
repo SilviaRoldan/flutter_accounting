@@ -1,13 +1,10 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_accounting/graph_widget.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_accounting/widgets/month_widget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-
 
 
 
@@ -19,26 +16,21 @@ class GraphicInvoices extends StatefulWidget {
 
 class _GraphicInvoicesState extends State<GraphicInvoices> {
   PageController _controller;
-
   int currentPage = 8;
+  Stream<QuerySnapshot> _query;
 
   @override
 
 
-  void initState(){
-      super.initState();
+  void initState() {
+    super.initState();
 
+    _query = Firestore.instance
+        .collection('expenses')
+        .where("month_invoices", isEqualTo: currentPage + 1)
+        .snapshots();
 
-      FirebaseFirestore.instance
-          .collection('expensives')
-          .where('month_invoices', isEqualTo: currentPage + 1)
-          .snapshots()
-          .listen((data) =>
-          data.docs.forEach((doc) => print(doc['category'])));
-
-
-
-      _controller = PageController(
+    _controller = PageController(
       initialPage: currentPage,
       viewportFraction: 0.4,
     );
@@ -94,18 +86,25 @@ class _GraphicInvoicesState extends State<GraphicInvoices> {
 
   Widget _body() {
     return SafeArea(
-        child: Column(
-          children: <Widget>[
-            _selector(),
-            _expenses(),
-            _graph(),
-            Container(
-              color: Colors.lightGreen.withOpacity(0.15),
-              height: 24.0,
-            ),
-            _list(),
-          ],
-        )
+      child: Column(
+        children: <Widget>[
+          _selector(),
+          StreamBuilder<QuerySnapshot>(
+            stream: _query,
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
+              if (data.hasData) {
+                return MonthWidget(
+                  documents: data.data.documents,
+                );
+              }
+
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -147,6 +146,12 @@ class _GraphicInvoicesState extends State<GraphicInvoices> {
         onPageChanged: (newPage) {
           setState(() {
             currentPage = newPage;
+
+            _query = Firestore.instance
+                .collection('expensives')
+                .where('month_invoices', isEqualTo: currentPage + 1)
+                .snapshots();
+
           });
         },
         controller: _controller,
@@ -169,84 +174,5 @@ class _GraphicInvoicesState extends State<GraphicInvoices> {
     );
   }
 
-  Widget _expenses() {
-    return Column(
-      children: <Widget>[
-        Text('\$2.365,50',
-         style: TextStyle (
-           fontWeight: FontWeight.bold,
-           fontSize: 40.0,
-           color: Colors.lightGreen
-         ),
-        ),
-        Text('Total Expenses',
-          style: TextStyle (
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-              color: Colors.blueGrey,
-          ),
-        ),
 
-      ],
-    );
-  }
-
-  Widget _graph() {
-    return Container(
-      height: 250.0,
-        child: GraphWidget(),
-    );
-  }
-
-  Widget _item (IconData icon, String name, int percent, double value) {
-    return ListTile (
-      leading: Icon (icon, color: Colors.lightGreen,),
-      title: Text(name,
-        style: TextStyle (
-          fontWeight: FontWeight.bold,
-          fontSize: 18.0,
-          color: Colors.blueGrey,
-        ),
-      ),
-      subtitle: Text('$percent% of expenses',
-        style: TextStyle (
-          fontWeight: FontWeight.bold,
-          color: Colors.blueGrey,
-        ),
-      ),
-      trailing: Container (
-        decoration: BoxDecoration (
-          color: Colors.lightGreen.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('\$$value',
-            style: TextStyle (
-              fontWeight: FontWeight.bold,
-              color: Colors.blueGrey,
-            ),
-          ),
-        ),
-
-      ),
-    );
-  }
-
-  Widget _list() {
-    return Expanded(
-        child: ListView (
-          children: <Widget>[
-            _item(FontAwesomeIcons.shoppingCart, 'Shopping', 14, 145.12),
-            _item(FontAwesomeIcons.fish, 'Shopping', 5, 96.32),
-            _item(FontAwesomeIcons.personBooth, 'Clothes', 2, 89.23),
-            _item(FontAwesomeIcons.laptop, 'Computer', 15, 523.23),
-            _item(FontAwesomeIcons.shuttleVan, 'Petrol', 3, 200.0),
-            _item(FontAwesomeIcons.cocktail, 'Alcohol', 10, 254.12),
-            _item(FontAwesomeIcons.fileAlt, 'Bills', 14, 145.12),
-
-          ],
-        ),
-    );
-  }
 }
